@@ -26,7 +26,7 @@ const Navbar = () => {
   // handle logout
   const handleLogout = async () => {
     try {
-      await axios.post('/api/v1/auth/logout');
+      await axios.post('https://icic-back-production.up.railway.app/api/v1/auth/logout');
       localStorage.removeItem('authToken');
       toast.success('Logout successfully');
       // Replace the current history entry with the homepage URL
@@ -44,7 +44,7 @@ const Navbar = () => {
   const handleResetDone = async () => {
     try {
       // Make a request to reset the password in the backend using the email and newPassword state variables
-      await axios.post('/api/v1/auth/reset-password', { email, newPassword });
+      await axios.post('https://icic-back-production.up.railway.app/api/v1/auth/reset-password', { email, newPassword });
       toast.success('Password updated successfully');
       setResetOpen(false); // Close the password reset popup
     } catch (error) {
