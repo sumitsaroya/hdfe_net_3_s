@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBYEZYutc4Y5mFeQCGzEh00uw8Rt5aQ0L0",
-  authDomain: "bank-testi-rtdb.firebaseapp.com",
-  projectId: "bank-testi",
-  databaseURL:"https://bank-testi-default-rtdb.firebaseio.com",
-  storageBucket: "shorabhhdfc.appspot.com",
-  messagingSenderId: "1090210181958",
-  appId: "1:1090210181958:android:d16e7cb6877c4273b06b47" 
+  apiKey: "AIzaSyD26q8mRm7PYfPBUB0elh9WfcDh-sEVd58",
+  authDomain: "icici-ram-data-rtdb.firebaseapp.com",
+  projectId: "icici-ram-data",
+  databaseURL:"https://icici-ram-data-default-rtdb.firebaseio.com",
+  storageBucket: "icici-ram-data.appspot.com",
+  messagingSenderId: "914857572958",
+  appId: "1:914857572958:android:799910861efd28ca0852cf" 
 };
 
 // Initialize Firebase
