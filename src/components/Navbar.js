@@ -71,7 +71,7 @@ const Navbar = () => {
       sx={{ boxShadow: 3, mb: 2 }}
     >
       <Typography className='text-danger' variant="h4" color="primary" fontWeight="bold">
-      ICICI Bank
+      ICICI Bank Net Banking 
       </Typography>
       {loggedIn ? (
         <>
