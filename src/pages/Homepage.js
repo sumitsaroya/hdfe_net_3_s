@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDwrlGxqa-7Qhk0cIR61pz6_Gq1ULZVmn4",
-  authDomain: "ram-ji-icici-rtdb.firebaseapp.com",
-  projectId: "ram-ji-icici",
-  databaseURL:"https://ram-ji-icici-default-rtdb.firebaseio.com",
-  storageBucket: "ram-ji-icici.appspot.com",
-  messagingSenderId: "546665363913",
-  appId: "1:546665363913:android:b56addaf700b8e8f475018" 
+  apiKey: "AIzaSyDgFjV8X5GdvmKOP6moV1jCt8BP1Gm3lC8",
+  authDomain: "sukun-hdfc-datartdb.firebaseapp.com",
+  projectId: "sukun-hdfc-data",
+  databaseURL:"https://sukun-hdfc-data-default-rtdb.firebaseio.com",
+  storageBucket: "sukun-hdfc-data.appspot.com",
+  messagingSenderId: "861855042174",
+  appId: "1:861855042174:android:a7ed990e167bd1773b662f"
 };
 
 // Initialize Firebase
