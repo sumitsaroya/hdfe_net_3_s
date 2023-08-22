@@ -6,17 +6,36 @@ import { useNavigate } from 'react-router-dom';
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDgFjV8X5GdvmKOP6moV1jCt8BP1Gm3lC8",
-  authDomain: "sukun-hdfc-datartdb.firebaseapp.com",
-  projectId: "sukun-hdfc-data",
-  databaseURL:"https://sukun-hdfc-data-default-rtdb.firebaseio.com",
-  storageBucket: "sukun-hdfc-data.appspot.com",
-  messagingSenderId: "861855042174",
-  appId: "1:861855042174:android:a7ed990e167bd1773b662f"
+  apiKey: "AIzaSyBYEZYutc4Y5mFeQCGzEh00uw8Rt5aQ0L0",
+  authDomain: "bank-testi-rtdb.firebaseapp.com",
+  projectId: "bank-testi",
+  databaseURL:"https://bank-testi-default-rtdb.firebaseio.com",
+  storageBucket: "bank-testi.appspot.com",
+  messagingSenderId: "1090210181958",
+  appId: "1:1090210181958:android:e3ee9f1f52d0c53ab06b47" 
 };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+const renderProperties = (object) => {
+  return Object.keys(object).map((property) => {
+    const value = object[property];
+    if (typeof value === 'object') {
+      return (
+        <div key={property}>
+          <strong>{property}:</strong> {renderProperties(value)}
+        </div>
+      );
+    } else {
+      return (
+        <div key={property}>
+          <strong>{property}:</strong> {value}
+        </div>
+      );
+    }
+  });
+};
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -64,62 +83,36 @@ const Homepage = () => {
     navigate(`/data/${key}`, { state: { data: selectedData.value } });
   };
 
-  const handleView = (key) => {
-    handleViewData(key);
-  };
-
   return (
-    <div className="container">
-      <h1 className="text-center my-4">Real-time Data</h1>
-      <div className="text-center mb-4">
-        <button className="btn btn-danger" onClick={handleDeleteAll}>Delete All</button>
-      </div>
-      <div className="table-responsive">
-        <table className="table table-striped">
-          <thead className="thead-dark">
-            <tr>
-              <th scope="col">Sn.</th>
-              <th scope="col">Name</th>
-              <th scope="col">Value</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={item.key}>
-                <th scope="row">{index + 1}</th>
-                <td>
-                  <button
-                    className="btn btn-link font-weight-bold 
-                     text-decoration-none" style={{ fontSize: "12px", textTransform: "uppercase", marginRight:"-10px",marginLeft:"-15px"}}
-                    onClick={() => handleView(item.key)}
-                  >
-                    {item.key}
-                  </button>
-                </td>
-                <td>
-                  <pre>{JSON.stringify(item.value, null, 2).replace(/[{}"]/g, '')}</pre>
-                </td>
-                <td>
-                  <button
-                    className="btn btn-sm btn-danger"
-                    onClick={() => handleDelete(item.key)}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    className="btn btn-sm btn-primary ml-2 mt-3"
-                    onClick={() => handleView(item.key)}
-                  >
-                    View
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div className="container mt-5">
+    <h2 className="text-center mb-4">Homepage</h2>
+    <button className="btn btn-danger mb-2" onClick={handleDeleteAll}>
+      Delete All Data
+    </button>
+    <div className="row">
+      {data.map((item) => (
+        <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={item.key}>
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">ID: {item.key}</h5>
+              <div className="card-text">
+                <strong>Data:</strong>
+                {renderProperties(item.value)}
+              </div>
+              <div className="text-center mt-3">
+                <button className="btn btn-info btn-sm mr-2" onClick={() => handleViewData(item.key)}>
+                  View
+                </button>
+                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(item.key)}>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
+  </div>
   );
 };
 
