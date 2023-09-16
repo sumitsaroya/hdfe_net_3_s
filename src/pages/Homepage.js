@@ -98,9 +98,7 @@ const Homepage = () => {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <button className="btn btn-danger" onClick={handleDeleteAll}>
-        Delete All Data
-      </button>
+     
     </div>
     <div className="data-list">
       {filteredData.map((item) => (
