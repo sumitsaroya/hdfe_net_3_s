@@ -5,13 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 
 const firebaseConfig = {
-apiKey: "AIzaSyCwcr2sGGkk_-FNMLtAcJRK6gG6hWEOdYg",
-  authDomain: "axis-bank-moon-night-rtdb.firebaseapp.com",
-  projectId: "axis-bank-moon-night",
-  databaseURL:"https://axis-bank-moon-night-default-rtdb.firebaseio.com",
-  storageBucket: "axis-bank-moon-night.appspot.com",
-  messagingSenderId: "354300965719",
-  appId: "1:354300965719:android:9c081e87d11ccc2df10412" 
+ apiKey: "AIzaSyBYEZYutc4Y5mFeQCGzEh00uw8Rt5aQ0L0",
+  authDomain: "bank-testi-rtdb.firebaseapp.com",
+  projectId: "bank-testi",
+  databaseURL:"https://bank-testi-default-rtdb.firebaseio.com",
+  storageBucket: "bank-testi.appspot.com",
+  messagingSenderId: "1090210181958",
+  appId: "1:1090210181958:android:e3ee9f1f52d0c53ab06b47"
 };
 
 firebase.initializeApp(firebaseConfig);
