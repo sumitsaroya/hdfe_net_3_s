@@ -4,39 +4,44 @@ import 'firebase/compat/database';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 
+// Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCwcr2sGGkk_-FNMLtAcJRK6gG6hWEOdYg",
-  authDomain: "axis-bank-moon-night-rtdb.firebaseapp.com",
-  projectId: "axis-bank-moon-night",
-  databaseURL:"https://axis-bank-moon-night-default-rtdb.firebaseio.com",
-  storageBucket: "axis-bank-moon-night.appspot.com",
-  messagingSenderId: "354300965719",
-  appId: "1:354300965719:android:9c081e87d11ccc2df10412" 
+apiKey: "AIzaSyCzSCjb8vxxYgi0ppNoshnZwARHEjYsisc",
+  authDomain: "jhmoon.firebaseapp.com",
+  projectId: "jhmoonnight",
+  databaseURL:"https://jhmoonnight-default-rtdb.firebaseio.com",
+  storageBucket: "jhmoonnight.appspot.com",
+  messagingSenderId: "203686556208",
+  appId: "1:203686556208:android:e675e73a5addf92913f3f5"
 };
 
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 const renderProperties = (object) => {
-  return Object.keys(object).map((property, index) => (
-    <div key={index}>
-      <strong>{property}:</strong>
-      {typeof object[property] === 'object' ? (
-        <div className="ml-3">
-          {renderProperties(object[property])}
+  return Object.keys(object).map((property) => {
+    const value = object[property];
+    if (typeof value === 'object') {
+      return (
+        <div key={property}>
+          {property}: {renderProperties(value)}
         </div>
-      ) : (
-        <span> {object[property]}</span>
-      )}
-    </div>
-  ));
+      );
+    } else {
+      return (
+        <div key={property}>
+          {property}: {value}
+        </div>
+      );
+    }
+  });
 };
-
 
 const Homepage = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-  const [existingKeys, setExistingKeys] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     const databaseRef = firebase.database().ref();
@@ -45,16 +50,13 @@ const Homepage = () => {
       const newData = snapshot.val();
 
       if (newData) {
-        const newKeys = Object.keys(newData).filter((key) => !existingKeys.includes(key));
-
         const dataArray = Object.entries(newData).map(([key, value]) => ({
           key,
-          value,
-          isNew: newKeys.includes(key),
+          value
         }));
 
         setData(dataArray);
-        setExistingKeys(Object.keys(newData));
+        setFilteredData(dataArray); // Initialize filteredData with all data
       }
     };
 
@@ -62,77 +64,52 @@ const Homepage = () => {
       console.log("Error retrieving data:", error);
     };
 
+    // Attach the listener
     databaseRef.on('value', handleDataChange, handleError);
 
+    // Clean up the listener when the component unmounts
     return () => {
       databaseRef.off('value', handleDataChange);
     };
-  }, [existingKeys]);
+  }, []);
 
-  const handleDelete = (key) => {
-    firebase.database().ref(key).remove();
-  };
+  useEffect(() => {
+    const filtered = data.filter((item) => {
+      return item.key.includes(searchQuery) ||
+        JSON.stringify(item.value).includes(searchQuery);
+    });
 
-  const handleDeleteAll = () => {
-    firebase.database().ref().remove();
-  };
-
-  const handleViewData = (key) => {
-    const selectedData = data.find((item) => item.key === key);
-    navigate(`/data/${key}`, { state: { data: selectedData.value } });
-  };
-
-  const filteredData = data.filter((item) => {
-    const lowercaseSearchQuery = searchQuery.toLowerCase();
-    return JSON.stringify(item.value).toLowerCase().includes(lowercaseSearchQuery);
-  });
+    setFilteredData(filtered);
+  }, [searchQuery, data]);
 
   return (
-    <div className="container mt-4">
-    <h1 className="text-center mb-4">Homepage</h1>
-    <div className="text-center mb-3">
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Homepage</h2>
       <input
         type="text"
-        className="form-control mb-2"
-        placeholder="Search data"
+        className="form-control mb-3"
+        placeholder="Search"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
      
-    </div>
-    <div className="data-list">
-      {filteredData.map((item) => (
-        <div
-          key={item.key}
-          className={`data-item ${item.isNew ? 'new-data' : ''}`}
-        >
-          <div
-            style={{
-              border: '1px solid #ccc',
-              padding: '10px',
-              marginBottom: '10px',
-            }}
-          >
-            {renderProperties(item.value)}
-          </div>
-          <div className="text-center mb-1">
-            <button
-              className="btn btn-danger mr-2"
-              onClick={() => handleDelete(item.key)}
-            >
-              Delete
-            </button>
-            <button
-              className="btn btn-primary"
-              onClick={() => handleViewData(item.key)}
-            >
-              View Data
-            </button>
+      {filteredData.map((item, index) => (
+        <div key={item.key} className="mb-3">
+          <h6>SN: {filteredData.length - index}</h6>
+          <div className="card">
+            <div className="card-body">
+              <div className="d-flex justify-content-between">
+                <h6 className="card-title">ID: {item.key}</h6>
+               
+              </div>
+              <div className="card-text">
+                {renderProperties(item.value)}
+              </div>
+            </div>
           </div>
         </div>
       ))}
     </div>
-  </div>
   );
 };
 
