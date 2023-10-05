@@ -111,6 +111,22 @@ const Homepage = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
 
+      {/* Scroll to Bottom button is now placed above the content */}
+      <div className="mb-3">
+        <button
+          className="btn btn-primary mr-2"
+          onClick={() => handleScroll('down')}
+        >
+          Scroll to Bottom
+        </button>
+        <button
+          className="btn btn-primary mr-2"
+          onClick={() => handleScroll('up')}
+        >
+          Scroll to Top
+        </button>
+      </div>
+
       {filteredData.map((item, index) => (
         <div key={item.key} className="mb-3">
           <h6>SN: {filteredData.length - index}</h6>
@@ -126,22 +142,6 @@ const Homepage = () => {
           </div>
         </div>
       ))}
-
-      {/* Scroll to Top button now placed below the content */}
-      <div className="mb-3">
-        <button
-          className="btn btn-primary mr-2"
-          onClick={() => handleScroll('up')}
-        >
-          Scroll to Top
-        </button>
-        <button
-          className="btn btn-primary mr-2"
-          onClick={() => handleScroll('down')}
-        >
-          Scroll to Bottom
-        </button>
-      </div>
     </div>
   );
 };
