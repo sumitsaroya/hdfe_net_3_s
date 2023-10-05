@@ -119,12 +119,7 @@ const Homepage = () => {
         >
           Scroll to Bottom
         </button>
-        <button
-          className="btn btn-primary mr-2"
-          onClick={() => handleScroll('up')}
-        >
-          Scroll to Top
-        </button>
+        
       </div>
 
       {filteredData.map((item, index) => (
@@ -142,6 +137,12 @@ const Homepage = () => {
           </div>
         </div>
       ))}
+      <button
+          className="btn btn-primary mr-2"
+          onClick={() => handleScroll('up')}
+        >
+          Scroll to Top
+        </button>
     </div>
   );
 };
