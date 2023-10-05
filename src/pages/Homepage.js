@@ -82,6 +82,7 @@ const Homepage = () => {
         behavior: 'smooth',
       });
     } else if (direction === 'down') {
+      // Scroll down to the bottom of the document
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth',
