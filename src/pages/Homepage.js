@@ -37,6 +37,7 @@ const renderProperties = (object) => {
   });
 };
 
+
 const Homepage = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -111,7 +112,7 @@ const Homepage = () => {
       />
 
       {/* Scroll to Bottom button is now placed above the content */}
-
+  
 
       {filteredData.map((item, index) => (
         <div key={item.key} className="mb-3">
@@ -129,7 +130,7 @@ const Homepage = () => {
         </div>
       ))}
 
-      {/* Floating Scroll Buttons */}
+      {/* Floating Scroll Buttons with opacity */}
       <div
         style={{
           position: 'fixed',
@@ -137,6 +138,7 @@ const Homepage = () => {
           right: '20px',
           display: 'flex',
           flexDirection: 'column',
+          opacity: '0.6', // Adjust opacity here (0.1 is equivalent to 10%)
         }}
       >
         <button
@@ -151,7 +153,7 @@ const Homepage = () => {
           className="btn btn-primary"
           onClick={() => handleScroll('down')}
         >
-           ⬇️
+          ⬇️
         </button>
       </div>
     </div>
