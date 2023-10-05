@@ -102,20 +102,7 @@ const Homepage = () => {
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">Homepage</h2>
-      <div className="mb-3">
-        <button
-          className="btn btn-primary mr-2"
-          onClick={() => handleScroll('up')}
-        >
-          Scroll to Top
-        </button>
-        <button
-          className="btn btn-primary mr-2"
-          onClick={() => handleScroll('down')}
-        >
-          Scroll to Bottom
-        </button>
-      </div>
+      
       <input
         type="text"
         className="form-control mb-3"
@@ -139,6 +126,22 @@ const Homepage = () => {
           </div>
         </div>
       ))}
+
+      {/* Scroll to Top button now placed below the content */}
+      <div className="mb-3">
+        <button
+          className="btn btn-primary mr-2"
+          onClick={() => handleScroll('up')}
+        >
+          Scroll to Top
+        </button>
+        <button
+          className="btn btn-primary mr-2"
+          onClick={() => handleScroll('down')}
+        >
+          Scroll to Bottom
+        </button>
+      </div>
     </div>
   );
 };
