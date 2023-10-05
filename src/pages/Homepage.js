@@ -74,7 +74,7 @@ const Homepage = () => {
   }, []);
 
   const handleScroll = (direction) => {
-    const scrollAmount = 300; // You can adjust this value based on your preference
+    const scrollAmount = 300;
 
     if (direction === 'up') {
       window.scrollTo({
@@ -82,7 +82,6 @@ const Homepage = () => {
         behavior: 'smooth',
       });
     } else if (direction === 'down') {
-      // Scroll down to the bottom of the document
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth',
@@ -112,15 +111,7 @@ const Homepage = () => {
       />
 
       {/* Scroll to Bottom button is now placed above the content */}
-      <div className="mb-3">
-        <button
-          className="btn btn-primary mr-2"
-          onClick={() => handleScroll('down')}
-        >
-          Scroll to Bottom
-        </button>
-        
-      </div>
+
 
       {filteredData.map((item, index) => (
         <div key={item.key} className="mb-3">
@@ -137,12 +128,32 @@ const Homepage = () => {
           </div>
         </div>
       ))}
-      <button
-          className="btn btn-primary mr-2"
+
+      {/* Floating Scroll Buttons */}
+      <div
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <button
+          style={{ marginBottom: '10px' }}
+          className="btn btn-primary"
           onClick={() => handleScroll('up')}
         >
-          Scroll to Top
+          ⬆️
         </button>
+        <button
+          style={{ marginBottom: '10px' }}
+          className="btn btn-primary"
+          onClick={() => handleScroll('down')}
+        >
+           ⬇️
+        </button>
+      </div>
     </div>
   );
 };
