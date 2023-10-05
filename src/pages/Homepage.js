@@ -78,15 +78,10 @@ const Homepage = () => {
 
     if (direction === 'up') {
       window.scrollTo({
-        top: window.scrollY - scrollAmount,
+        top: 0,
         behavior: 'smooth',
       });
     } else if (direction === 'down') {
-      window.scrollTo({
-        top: window.scrollY + scrollAmount,
-        behavior: 'smooth',
-      });
-    } else if (direction === 'bottom') {
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth',
@@ -111,17 +106,11 @@ const Homepage = () => {
           className="btn btn-primary mr-2"
           onClick={() => handleScroll('up')}
         >
-          Scroll Up
+          Scroll to Top
         </button>
         <button
           className="btn btn-primary mr-2"
           onClick={() => handleScroll('down')}
-        >
-          Scroll Down
-        </button>
-        <button
-          className="btn btn-primary"
-          onClick={() => handleScroll('bottom')}
         >
           Scroll to Bottom
         </button>
