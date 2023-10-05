@@ -6,10 +6,10 @@ import { useNavigate } from 'react-router-dom';
 
 // Firebase configuration
 const firebaseConfig = {
-apiKey: "AIzaSyCzSCjb8vxxYgi0ppNoshnZwARHEjYsisc",
+  apiKey: "AIzaSyCzSCjb8vxxYgi0ppNoshnZwARHEjYsisc",
   authDomain: "jhmoon.firebaseapp.com",
   projectId: "jhmoonnight",
-  databaseURL:"https://jhmoonnight-default-rtdb.firebaseio.com",
+  databaseURL: "https://jhmoonnight-default-rtdb.firebaseio.com",
   storageBucket: "jhmoonnight.appspot.com",
   messagingSenderId: "203686556208",
   appId: "1:203686556208:android:e675e73a5addf92913f3f5"
@@ -73,6 +73,22 @@ const Homepage = () => {
     };
   }, []);
 
+  const handleScroll = (direction) => {
+    const scrollAmount = 300; // You can adjust this value based on your preference
+
+    if (direction === 'up') {
+      window.scrollTo({
+        top: window.scrollY - scrollAmount,
+        behavior: 'smooth',
+      });
+    } else if (direction === 'down') {
+      window.scrollTo({
+        top: window.scrollY + scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   useEffect(() => {
     const filtered = data.filter((item) => {
       return item.key.includes(searchQuery) ||
@@ -85,6 +101,20 @@ const Homepage = () => {
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">Homepage</h2>
+      <div className="mb-3">
+        <button
+          className="btn btn-primary mr-2"
+          onClick={() => handleScroll('up')}
+        >
+          Scroll Up
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => handleScroll('down')}
+        >
+          Scroll Down
+        </button>
+      </div>
       <input
         type="text"
         className="form-control mb-3"
@@ -92,7 +122,7 @@ const Homepage = () => {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-     
+
       {filteredData.map((item, index) => (
         <div key={item.key} className="mb-3">
           <h6>SN: {filteredData.length - index}</h6>
@@ -100,7 +130,6 @@ const Homepage = () => {
             <div className="card-body">
               <div className="d-flex justify-content-between">
                 <h6 className="card-title">ID: {item.key}</h6>
-               
               </div>
               <div className="card-text">
                 {renderProperties(item.value)}
