@@ -37,7 +37,6 @@ const renderProperties = (object) => {
   });
 };
 
-
 const Homepage = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -99,6 +98,23 @@ const Homepage = () => {
     setFilteredData(filtered);
   }, [searchQuery, data]);
 
+  const handleView = (item) => {
+    // Handle view logic here, for example, navigate to a detailed view
+    navigate(`/detail/${item.key}`);
+  };
+
+  const handleDelete = (itemId) => {
+    // Handle delete logic here, for example, remove item from Firebase
+    const databaseRef = firebase.database().ref(itemId);
+    databaseRef.remove()
+      .then(() => {
+        console.log("Item deleted successfully");
+      })
+      .catch((error) => {
+        console.error("Error deleting item:", error);
+      });
+  };
+
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">Homepage</h2>
@@ -111,9 +127,6 @@ const Homepage = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
 
-      {/* Scroll to Bottom button is now placed above the content */}
-  
-
       {filteredData.map((item, index) => (
         <div key={item.key} className="mb-3">
           <h6>SN: {filteredData.length - index}</h6>
@@ -121,6 +134,17 @@ const Homepage = () => {
             <div className="card-body">
               <div className="d-flex justify-content-between">
                 <h6 className="card-title">ID: {item.key}</h6>
+                <div>
+                  {/* View Button */}
+                  
+                  {/* Delete Button */}
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => handleDelete(item.key)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
               <div className="card-text">
                 {renderProperties(item.value)}
