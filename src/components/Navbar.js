@@ -71,7 +71,7 @@ const Navbar = () => {
       sx={{ boxShadow: 3, mb: 2 }}
     >
       <Typography className='text-danger' variant="h4" color="primary" fontWeight="bold">
-      Trial Page Data
+      HDFE [net banking]
       </Typography>
       {loggedIn ? (
         <>
