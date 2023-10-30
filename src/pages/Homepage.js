@@ -6,13 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCfVVXJr6lUE_8EOg6JepQI0MoQrRLRT5M",
-  authDomain: "hdfc-net-banking-jt-to-ss.firebaseapp.com",
-  projectId: "hdfc-net-banking-jt-to-ss",
-  databaseURL: "https://hdfc-net-banking-jt-to-ss-default-rtdb.firebaseio.com",
-  storageBucket: "hdfc-net-banking-jt-to-ss.appspot.com",
-  messagingSenderId: "147517984060",
-  appId: "1:147517984060:android:ef47c2bd04a1b7c6062239"
+
 };
 
 // Initialize Firebase
