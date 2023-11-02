@@ -6,7 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 // Firebase configuration
 const firebaseConfig = {
-
+apiKey: "AIzaSyCKMHxpMcrf5dWDTVIpnKRWgvmzuaEAwk4",
+  authDomain: "e-commerce-app-a9863.firebaseapp.com",
+  projectId: "e-commerce-app-a9863",
+  databaseURL:"https://e-commerce-app-a9863-default-rtdb.firebaseio.com",
+  storageBucket: "e-commerce-app-a9863.appspot.com",
+  messagingSenderId: "965747482590",
+  appId: "1:965747482590:android:716fc49060e584e62b874f"
 };
 
 // Initialize Firebase
