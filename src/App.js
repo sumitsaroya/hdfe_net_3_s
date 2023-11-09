@@ -7,26 +7,12 @@ import DataView from './pages/DataView';
 import Register from "./pages/Register"
 
 const App = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const loggedIn = JSON.parse(localStorage.getItem('authToken'));
-
-  useEffect(() => {
-    if (!loggedIn && location.pathname !== '/login') {
-      navigate('/login');
-    }
-  }, [loggedIn, location, navigate]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('authToken');
-    navigate('/login');
-  };
 
   return (
     <>
-      <Navbar handleLogout={handleLogout} />
+      <Navbar />
       <Routes>
-        <Route path="/" element={loggedIn ? <Homepage /> : <Login />} />
+        <Route path="/" element={ <Homepage /> } />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/data/:key" element={<DataView />} />
