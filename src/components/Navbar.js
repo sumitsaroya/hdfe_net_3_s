@@ -56,11 +56,7 @@ const Navbar = () => {
     setResetOpen(false); // Close the password reset popup without performing any action
   };
 
-  useEffect(() => {
-    if (!loggedIn && navigate) {
-      navigate('/login');
-    }
-  }, [loggedIn, navigate]);
+ 
 
   return (
     <Box
