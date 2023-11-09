@@ -91,12 +91,12 @@ const Navbar = () => {
         </>
       ) : (
         <>
-          {/* <NavLink
+         <NavLink
             to="/register"
             sx={{ padding: '1rem' , textDecoration: 'none' }} // Added styling
           >
             Sign Up
-          </NavLink> */}
+          </NavLink> 
           <NavLink
             className="btn  text-danger"
             to="/login"
