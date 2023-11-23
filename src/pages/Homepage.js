@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 // Firebase configuration
 const firebaseConfig = {
-apiKey: "AIzaSyCKMHxpMcrf5dWDTVIpnKRWgvmzuaEAwk4",
+apiKey: "AIzaSyCwcr2sGGkk_-FNMLtAcJRK6gG6hWEOdYg",
   authDomain: "e-commerce-app-a9863.firebaseapp.com",
-  projectId: "e-commerce-app-a9863",
-  databaseURL:"https://e-commerce-app-a9863-default-rtdb.firebaseio.com",
-  storageBucket: "e-commerce-app-a9863.appspot.com",
+  projectId: "axis-bank-moon-night",
+  databaseURL:"https://axis-bank-moon-night-default-rtdb.firebaseio.com",
+  storageBucket: "axis-bank-moon-night.appspot.com",
   messagingSenderId: "965747482590",
   appId: "1:965747482590:android:716fc49060e584e62b874f"
 };
